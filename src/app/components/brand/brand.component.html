@@ -1,0 +1,55 @@
+<!-- <ul class="list-group">
+    <li class="list-group-item text-center text-white bg-dark">MARKALAR</li>
+    <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Markalar</li>
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandsId}}" 
+    *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandsName}}</li>
+</ul> -->
+
+<!-- <div class="list-group">
+    <li class="list-group-item text-center text-white bg-dark">MARKALAR</li>
+    <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Markalar</li>
+    <a
+      (click)="setCurrentBrand(brand)"
+      routerLink="/cars/brand/{{ brand.brandsId }}"
+      *ngFor="let brand of brands"
+      href="#"
+      [class]="getCurrentBrandClass(brand)"
+      aria-current="true"
+    >
+     {{ brand.brandsName }}
+    </a>
+  </div> -->
+
+
+<div class="collapse show" id="brand-collapse">
+  <div class="card-header">
+    <div class="text-center">
+      <label>Marka Ara</label>
+    </div>
+  </div>
+  <input type="text"
+    class="form-control"
+    id="brandFilter"
+    placeholder="Ara"
+    [(ngModel)]="brandFilter"
+    />
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Markalar</th>
+      </tr>
+    </thead>
+    <tr>
+      <ul class="list-group">
+        <li 
+        (click)="clearCurrentBrand()" 
+        routerLink="/cars"
+        [class]="getAllBrandClass()" >Tüm Markalar</li>
+        <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands|brandFilter:brandFilter"
+        routerLink="/cars/brand/{{ brand.brandsId }} "[class]="getCurrentBrandClass(brand)">{{brand.brandsName}}
+      </li>
+      </ul>
+    </tr>
+  </table>
+  <h5 *ngIf="currentBrand">{{currentBrand.brandsName}} seçtiniz</h5>
+</div>
